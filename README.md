@@ -22,6 +22,24 @@ Beep is built on top of its [Streamer](https://godoc.org/github.com/faiface/beep
 - **Generate completely own artificial sounds.** Again, the `Streamer` interface enables easy sound generation.
 - **Very small codebase.** The core is just ~1K LOC.
 
+## Soft limiter
+
+Summing many loud streamers (for example 32 simultaneous sound-effect channels) can push the mix
+past full scale, and the encoder then hard-clips it into the distortion heard on explosions and
+impacts. The `effects` package provides a stereo-linked soft limiter to place after a `Mixer` or
+`Mix`:
+
+```go
+// Out-of-the-box: align loudness to -16 dBFS and cap peaks at -1 dBFS.
+limited := effects.SoftLimiter(beep.Mix(voices...), sampleRate)
+```
+
+It combines a slow RMS loudness leveler (it rides overall level, so it does not chase or squash
+transients) with a feed-forward look-ahead peak limiter and a soft-clip safety net that guarantees
+no sample crosses the configured ceiling. All parameters are tunable through
+`effects.LimiterConfig`; start from `effects.DefaultLimiterConfig(sampleRate)` and override the
+fields you need. See `examples/limiter-demo` for an offline WAV example.
+
 ## Tutorial
 
 The [Wiki](https://github.com/faiface/beep/wiki) contains a handful of tutorials for you to get started. They teach the fundamentals and advanced topics alike. **Read them especially if you call `speaker.Init` every time you play something.**
