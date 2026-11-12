@@ -1,0 +1,5 @@
+window_size,implementation,p50_ms,p99_ms,p99_percent_of_frame_budget
+1024,production_fft,0.00900,0.01600,0.096
+1024,reference_naive_dft,4.78600,4.81800,28.908
+2048,production_fft,0.02000,0.03100,0.186
+2048,reference_naive_dft,19.14200,19.39200,116.352

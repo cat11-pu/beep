@@ -1,0 +1,7 @@
+window_size,metric,max,mean
+1024,peak_frequency_error_hz,0.244710,0.221149
+1024,reference_peak_frequency_error_hz,18.125000,16.937500
+1024,band_energy_relative_error,1.515e-09,2.216e-11
+2048,peak_frequency_error_hz,0.094496,0.055660
+2048,reference_peak_frequency_error_hz,7.687500,6.500000
+2048,band_energy_relative_error,3.243e-09,3.194e-11

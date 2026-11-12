@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:monospace;font-size:12px;fill:#222}.axis{stroke:#888;stroke-width:1}.heap{stroke:#1f77b4;stroke-width:2;fill:none}.total{stroke:#d62728;stroke-width:2;fill:none;stroke-dasharray:6 4}.grid{stroke:#eee}</style>
+<rect x="70" y="70" width="290" height="320" fill="none" class="axis"/>
+<line x1="70" y1="150" x2="360" y2="150" class="grid"/>
+<line x1="70" y1="230" x2="360" y2="230" class="grid"/>
+<line x1="70" y1="310" x2="360" y2="310" class="grid"/>
+<text x="70" y="52" font-size="14" font-weight="bold">N=1024 heap curve</text>
+<text x="195" y="425">frames</text>
+<text transform="translate(22 230) rotate(-90)">bytes</text>
+<path d="M70.0,230.0 L96.4,230.0 L122.7,230.0 L149.1,230.0 L175.5,230.0 L201.8,230.0 L228.2,230.0 L254.5,230.0 L280.9,230.0 L307.3,230.0 L333.6,230.0 L360.0,230.0 " class="heap"/>
+<path d="M70.0,230.0 L96.4,230.0 L122.7,230.0 L149.1,230.0 L175.5,230.0 L201.8,230.0 L228.2,230.0 L254.5,230.0 L280.9,230.0 L307.3,230.0 L333.6,230.0 L360.0,230.0 " class="total"/>
+<text x="78" y="88" fill="#d62728">TotalAlloc delta 0 B, malloc delta 0</text>
+<text x="78" y="354" fill="#1f77b4">HeapAlloc 818192 B</text>
+<text x="78" y="370" fill="#1f77b4">delta 0 B over 12000 frames</text>
+<text x="70" y="408">0</text>
+<text x="330" y="408">12000</text>
+<rect x="400" y="70" width="290" height="320" fill="none" class="axis"/>
+<line x1="400" y1="150" x2="690" y2="150" class="grid"/>
+<line x1="400" y1="230" x2="690" y2="230" class="grid"/>
+<line x1="400" y1="310" x2="690" y2="310" class="grid"/>
+<text x="400" y="52" font-size="14" font-weight="bold">N=2048 heap curve</text>
+<text x="525" y="425">frames</text>
+<text transform="translate(352 230) rotate(-90)">bytes</text>
+<path d="M400.0,230.0 L426.4,230.0 L452.7,230.0 L479.1,230.0 L505.5,230.0 L531.8,230.0 L558.2,230.0 L584.5,230.0 L610.9,230.0 L637.3,230.0 L663.6,230.0 L690.0,230.0 " class="heap"/>
+<path d="M400.0,230.0 L426.4,230.0 L452.7,230.0 L479.1,230.0 L505.5,230.0 L531.8,230.0 L558.2,230.0 L584.5,230.0 L610.9,230.0 L637.3,230.0 L663.6,230.0 L690.0,230.0 " class="total"/>
+<text x="408" y="88" fill="#d62728">TotalAlloc delta 0 B, malloc delta 0</text>
+<text x="408" y="354" fill="#1f77b4">HeapAlloc 1434528 B</text>
+<text x="408" y="370" fill="#1f77b4">delta 0 B over 12000 frames</text>
+<text x="400" y="408">0</text>
+<text x="660" y="408">12000</text>
+<line x1="70" y1="445" x2="100" y2="445" class="heap"/><text x="108" y="449">HeapAlloc (live heap)</text>
+<line x1="330" y1="445" x2="360" y2="445" class="total"/><text x="368" y="449">TotalAlloc (cumulative)</text>
+</svg>
