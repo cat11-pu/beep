@@ -22,6 +22,44 @@ Beep is built on top of its [Streamer](https://godoc.org/github.com/faiface/beep
 - **Generate completely own artificial sounds.** Again, the `Streamer` interface enables easy sound generation.
 - **Very small codebase.** The core is just ~1K LOC.
 
+## High-quality resampling
+
+`Resample` is a fast polynomial interpolator with no anti-aliasing filter, so it
+is fine for casual playback but dulls the high end (the nearest-neighbor /
+low-order interpolation rolls off frequencies well below Nyquist). For
+critical work use `ResampleHQ`, an anti-aliased, linear-phase polyphase FIR
+resampler built from a Kaiser-windowed sinc:
+
+```go
+hq := beep.ResampleHQ(44100, 48000, streamer)
+```
+
+Both directions (44.1 kHz -> 48 kHz and back) are supported. The kernel is
+designed deterministically from the two sample rates, so the same input always
+produces byte-identical output. Its measured performance is:
+
+- pass-band ripple below 0.01 dB across the 0..16 kHz pass band,
+- stop-band / alias attenuation above 100 dB by 20 kHz,
+- THD+N below roughly -100 dB for in-band tones,
+- a fixed integer-sample look-ahead delay.
+
+The filter introduces a known, constant delay so the caller can align streams.
+Query it with `Delay()` (a `time.Duration`), `DelayInputSamples()`, or
+`DelayOutputSamples()`:
+
+```go
+// The resampled stream is delayed by this duration relative to the input.
+alignment := hq.Delay()
+```
+
+The acceptance measurements (swept-sine and white-noise frequency response,
+THD+N, stop-band rejection, and delay) can be regenerated with the standalone
+verification tool, which writes CSV and PNG reports into `artifacts/`:
+
+```
+go run ./cmd/resamplehqverify -out artifacts
+```
+
 ## Tutorial
 
 The [Wiki](https://github.com/faiface/beep/wiki) contains a handful of tutorials for you to get started. They teach the fundamentals and advanced topics alike. **Read them especially if you call `speaker.Init` every time you play something.**
